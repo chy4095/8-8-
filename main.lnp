@@ -1,0 +1,6 @@
+"STARTUP.obj",
+"main.obj",
+"delay.obj",
+"led88.obj" 
+TO "main" 
+RAMSIZE(256) 

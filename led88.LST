@@ -1,0 +1,63 @@
+C51 COMPILER V9.00   LED88                                                                 03/03/2024 16:31:27 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE LED88
+OBJECT MODULE PLACED IN led88.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE led88.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "delay.h"
+   3          
+   4          sbit RCK=P3^5;          //RCLK
+   5          sbit SCK=P3^6;          //SRCLK
+   6          sbit SER=P3^4;          //SEK
+   7          
+   8          #define LED_PORT        P0
+   9          
+  10          
+  11          void _74HC595_byte(unsigned char byte)            //74HC595写入一个字节
+  12          {
+  13   1              unsigned char i;
+  14   1              for(i=0;i<8;i++)
+  15   1              {
+  16   2                      SER=byte&(0x80>>i);
+  17   2                      SCK=1;
+  18   2                      SCK=0;  
+  19   2              }
+  20   1              RCK=1;
+  21   1              RCK=0;
+  22   1      }
+  23          
+  24          
+  25          void init()
+  26          {
+  27   1              SCK=0;
+  28   1              RCK=0;
+  29   1      }
+  30          
+  31          void LED_showcol(unsigned char lie,date)          //LED显示屏显示一列数据
+  32          {
+  33   1              _74HC595_byte(date);
+  34   1              if(lie==0);
+  35   1              LED_PORT=~(0x80>>lie);
+  36   1              delay(1);
+  37   1              LED_PORT=0xff;
+  38   1      
+  39   1      }
+  40          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     84    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

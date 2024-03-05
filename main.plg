@@ -1,0 +1,12 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\c51项目\8×8点阵显示动画\1.uvproj
+Project File Date:  03/03/2024
+
+<h2>Output:</h2>
+compiling main.c...
+MAIN.C(48): warning C206: 'init': missing function-prototype
+main.c - 0 Error(s), 1 Warning(s).
